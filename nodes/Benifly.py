@@ -54,7 +54,7 @@ class MainWindow():
         defaults = {'filenameBackground': self.background,
                     'image_topic': '/camera/image_raw',
                     'n_queue_images': 2,
-                    'use_gui': True,  # You can turn off the GUI to speed the framerate.
+                    'use_gui': False,  # You can turn off the GUI to speed the framerate.
                     'scale_image': 1.0,  # Reducing the image scale will speed the framerate.
                     'n_edges_max': 1,  # Max number of edges per wing to detect, subject to threshold.
                     'rc_background': 1000.0,  # Time constant of the moving average background.
