@@ -1,14 +1,14 @@
 
-import time , os , sys
+import time, os, sys
 from Benifly import MainWindow
 from filemanager import FileManager
 
 # USER: set these variables
-#---------------------------------------------------------------------------------------
-root = 'H:\EXPERIMENTS\Experiment_Asymmetry_Control_Verification\HighContrast/22.5\Vid'  # folder with video files
-targetdir = os.path.join(root,'tracked') # where to save output data & video
-vidname = 'frames' # name of video variable in MATLAB .mat file (does not apply to videos of other formats)
-#---------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
+root = '/media/sam/SamData/Mosquitoes/'  # folder with video files
+targetdir = os.path.join(root, 'tracked')  # where to save output data & video
+vidname = 'frames'  # name of video variable in MATLAB .mat file (does not apply to videos of other formats)
+# ---------------------------------------------------------------------------------------
 
 FileSelect = FileManager() # create FileManager instance
 FileSelect.Select(root) # open file selection GUI in root folder

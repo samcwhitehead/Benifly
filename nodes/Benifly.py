@@ -1226,18 +1226,26 @@ class MainWindow():
             print("Tracking Complete: %5.3fs elapsed"% (time.time() - start_time) )
 
     def loopVid(self, fullfile):
-        while (True):
-            cap = cv2.VideoCapture(fullfile)
-            while (cap.isOpened()):
-                ret, frame = cap.read()
-                if ret:
-                    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                    self.image_callback(gray)
-                    self.process_image()
-                else:
-                    break
+        ex = True
+        cap = cv2.VideoCapture(fullfile)
+        while (cap.isOpened()):
+            ret, frame = cap.read()
+            if ret:
+                gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                self.image_callback(gray)
+                self.process_image()
 
-            cap.release()
+                # check for exit
+                if cv2.waitKey(1) & 0xFF == ord('w'):
+                    ex = False
+            else:
+                break
+
+            # exit if we've hit "w" key
+            if not ex:
+                break
+
+        cap.release()
 
     def runVid(self, fullfile, targetdir):
         self.vidfile = FileImport()
