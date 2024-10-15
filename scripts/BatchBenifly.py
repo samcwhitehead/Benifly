@@ -7,7 +7,7 @@ from filemanager import FileManager
 #---------------------------------------------------------------------------------------
 root = 'H:\EXPERIMENTS\Experiment_Asymmetry_Control_Verification\HighContrast/22.5\Vid'  # folder with video files
 targetdir = os.path.join(root,'tracked') # where to save output data & video
-vidname = 'vidData' # name of video variable in MATLAB .mat file (does not apply to videos of other formats)
+vidname = 'frames' # name of video variable in MATLAB .mat file (does not apply to videos of other formats)
 #---------------------------------------------------------------------------------------
 
 FileSelect = FileManager() # create FileManager instance
@@ -16,7 +16,8 @@ FileSelect.Select(root) # open file selection GUI in root folder
 Benifly = MainWindow() # create Benifly instance
 
 # Loop files to set auto-zero ===> press "w" when done with file
-Benifly.loopMat(FileSelect.files[0], vidname)
+# Benifly.loopMat(FileSelect.files[0], vidname)
+Benifly.loopVid(FileSelect.files[0])
 
 print('Files to track:')
 print('-------------------------------------')
@@ -31,8 +32,8 @@ for f in FileSelect.files:
     # USER: uncomment method to use    #---------------------------------------------------
     # Benifly.loopMat(f, vidname)
     # Benifly.loopVid(f)
-    Benifly.runMat(f, vidname, targetdir)
-    # Benifly.runVid(f, targetdir)
+    # Benifly.runMat(f, vidname, targetdir)
+    Benifly.runVid(f, targetdir)
     # Benifly.loopLive()
     #----------------------------------------------------
 
